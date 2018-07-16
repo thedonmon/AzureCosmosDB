@@ -96,7 +96,12 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 
 - Partition Key syntax vs the indexing syntax - partitioned paths cannot be excluded from indexing policies
 
-- https://docs.microsoft.com/en-us/azure/cosmos-db/sql-api-partition-data get example from C# code 
++++
+
+```csharp
+// Read document. Needs the partition key and the ID to be specified 
+Document result = await client.ReadDocumentAsync( UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
+```
 
 - Enables parallelism - searching multiple partitions in parallel
 
@@ -108,7 +113,7 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 
 - Microsoft finally open source?!
 
-  - Supports - .NET, Python, Node.js, Java, and Xamarin (mobile apps) 
+  - Supports - .NET, Python, Node.js, Java, and Xamarin (mobile apps) 
 
 - SQL API
 
@@ -128,21 +133,25 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 
 - Cassandra API
 
-  - Integrate with Apache Cassandra API and query data from Cosmos DB using Cassandra Query Based Language tools. 
+  - Integrate with Apache Cassandra API and query data from Cosmos DB using Cassandra Query Based Language tools. 
 
 ---
 
 ## Code Samples!
 
++++
+
 ```csharp
-        public async Task InitializeAsync()
+        
+public async Task InitializeAsync()
         {
             client = new DocumentClient(new Uri(Endpoint), AccessKey, new ConnectionPolicy { EnableEndpointDiscovery = true });
 
             await client.CreateDatabaseIfNotExistsAsync(new Database() { Id = DatabaseId });
             await client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId), new DocumentCollection { Id = CollectionId });
         }
-        private async Task CreateDatabaseIfNotExistsAsync()
+        
+private async Task CreateDatabaseIfNotExistsAsync()
         {
             try
             {
@@ -161,7 +170,8 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
             }
         }
 
-        private async Task CreateCollectionIfNotExistsAsync()
+        
+private async Task CreateCollectionIfNotExistsAsync()
         {
             try
             {
@@ -182,14 +192,9 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
                 }
             }
         }
-@[3-4](DocumentClient should be a Singleton Instance)
 ```
 
-
-
-
-
-
+@\[3-4\](DocumentClient should be a Singleton Instance)
 
 ---
 
@@ -197,19 +202,19 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 
 <br>
 
-@fa[twitter gp-contact](@gitpitch)
-
-@fa[github gp-contact](gitpitch)
-
-@fa[medium gp-contact](@gitpitch)
-
 ---?image=assets/image/gitpitch-audience.jpg
+
+---
+
+
 
 DISCUSSION NOTES:
 
 -Indexing
 
 - It's important to understand that when you manage indexing policy, you can make fine-grained trade-offs between index storage overhead, write and query throughput, and query consistency. - https://docs.microsoft.com/en-us/azure/cosmos-db/indexing-policies
+
++++
 
 | Consistency       | Indexing Mode: Consistent | Indexing Mode: Lazy | Indexing Mode: None |
 | ----------------- | ------------------------- | ------------------- | ------------------- |
