@@ -14,7 +14,7 @@
 
 ## Agenda
 
-- What is CosmosDB? |
+- What is CosmosDB? 
   - Why we use it
 
   - Global Distribution
@@ -26,9 +26,9 @@
     - Partitions
 
   - Supports a galaxy of APIs and languages
-- Configuration & Code Samples |
+- Configuration & Code Samples 
   - Project: AnalyzeMyStore
-- Lessons Learned |
+- Lessons Learned 
 
 ---
 
@@ -96,16 +96,19 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 
 - Partition Key syntax vs the indexing syntax - partitioned paths cannot be excluded from indexing policies
 
-+++
-
-```csharp
-// Read document. Needs the partition key and the ID to be specified 
-Document result = await client.ReadDocumentAsync( UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
-```
-
 - Enables parallelism - searching multiple partitions in parallel
 
   - Also enables sproc support
+
++++
+
+```csharp
+
+// Read document. Needs the partition key and the ID to be specified 
+Document result = await client.ReadDocumentAsync(                  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
+     new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
+
+```
 
 ---
 
@@ -142,59 +145,63 @@ Document result = await client.ReadDocumentAsync( UriFactory.CreateDocumentUri("
 +++
 
 ```csharp
-        
-public async Task InitializeAsync()
-        {
-            client = new DocumentClient(new Uri(Endpoint), AccessKey, new ConnectionPolicy { EnableEndpointDiscovery = true });
+        public async Task InitializeAsync() {
+         client = new DocumentClient(new Uri(Endpoint), AccessKey, new ConnectionPolicy {
+          EnableEndpointDiscovery = true
+         });
 
-            await client.CreateDatabaseIfNotExistsAsync(new Database() { Id = DatabaseId });
-            await client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId), new DocumentCollection { Id = CollectionId });
-        }
-        
-private async Task CreateDatabaseIfNotExistsAsync()
-        {
-            try
-            {
-                await client.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(DatabaseId));
-            }
-            catch (DocumentClientException e)
-            {
-                if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    await client.CreateDatabaseAsync(new Database { Id = DatabaseId }).ConfigureAwait(false);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+         await client.CreateDatabaseIfNotExistsAsync(new Database() {
+          Id = DatabaseId
+         });
+         await client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId), new DocumentCollection {
+          Id = CollectionId
+         });
         }
 
-        
-private async Task CreateCollectionIfNotExistsAsync()
-        {
-            try
-            {
-                await     client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId));
-            }
-            catch (DocumentClientException e)
-            {
-                if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    await client.CreateDocumentCollectionAsync(
-                        UriFactory.CreateDatabaseUri(DatabaseId),
-                        new DocumentCollection { Id = CollectionId },
-                        new RequestOptions { OfferThroughput = 1000 });
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        private async Task CreateDatabaseIfNotExistsAsync() {
+         try {
+          await client.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(DatabaseId));
+         } catch (DocumentClientException e) {
+          if (e.StatusCode == System.Net.HttpStatusCode.NotFound) {
+           await client.CreateDatabaseAsync(new Database {
+            Id = DatabaseId
+           }).ConfigureAwait(false);
+          } else {
+           throw;
+          }
+         }
+        }
+
+
+        private async Task CreateCollectionIfNotExistsAsync() {
+         try {
+          await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId));
+         } catch (DocumentClientException e) {
+          if (e.StatusCode == System.Net.HttpStatusCode.NotFound) {
+           await client.CreateDocumentCollectionAsync(
+            UriFactory.CreateDatabaseUri(DatabaseId),
+            new DocumentCollection {
+             Id = CollectionId
+            },
+            new RequestOptions {
+             OfferThroughput = 1000
+            });
+          } else {
+           throw;
+          }
+         }
         }
 ```
 
-@\[3-4\](DocumentClient should be a Singleton Instance)
+@\[1-4\](DocumentClient should be a Singleton Instance)
+
+---
+
+### Lessons Learned
+
+- Size restrictions on documents being stored (currently 2MB)
+
+- Leverage partitions!
 
 ---
 
@@ -202,31 +209,8 @@ private async Task CreateCollectionIfNotExistsAsync()
 
 <br>
 
----?image=assets/image/gitpitch-audience.jpg
+?image=assets/image/gitpitch-audience.jpg
 
 ---
 
 
-
-DISCUSSION NOTES:
-
--Indexing
-
-- It's important to understand that when you manage indexing policy, you can make fine-grained trade-offs between index storage overhead, write and query throughput, and query consistency. - https://docs.microsoft.com/en-us/azure/cosmos-db/indexing-policies
-
-+++
-
-| Consistency       | Indexing Mode: Consistent | Indexing Mode: Lazy | Indexing Mode: None |
-| ----------------- | ------------------------- | ------------------- | ------------------- |
-| Strong            | Strong                    | Eventual            | Strong              |
-| Bounded staleness | Bounded staleness         | Eventual            | Bounded staleness   |
-| Session           | Session                   | Eventual            | Session             |
-| Eventual          | Eventual                  | Eventual            | Eventual            |
-
-- Partitions
-
-  - Should not be an afterthought behind indexing. Should probably be considered first before deciding indexing policies and paths
-
-Sample Azure Cosmos Code
-
-https://github.com/Azure/azure-documentdb-dotnet
