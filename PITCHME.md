@@ -105,11 +105,13 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 ```csharp
 
 // Read document. Needs the partition key and the ID to be specified 
-Document result = await client.ReadDocumentAsync(                  UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"), 
-     new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
+Document result = await client.ReadDocumentAsync(UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
+ new RequestOptions {
+  PartitionKey = new PartitionKey("XMS-0001")
+ });
 
 ```
-
+@[6](Set partition key via code)
 ---
 
 ## API Support & Languages
@@ -193,7 +195,7 @@ Document result = await client.ReadDocumentAsync(                  UriFactory.Cr
         }
 ```
 
-@\[1-4\](DocumentClient should be a Singleton Instance)
+@[1-4](DocumentClient should be a Singleton Instance)
 
 ---
 
@@ -208,9 +210,5 @@ Document result = await client.ReadDocumentAsync(                  UriFactory.Cr
 ### Questions?
 
 <br>
-
-?image=assets/image/gitpitch-audience.jpg
-
----
 
 
