@@ -11,21 +11,19 @@
 ---
 
 ## Agenda
-- What is CosmosDB? 
-  - Why we use it
-
-  - Global Distribution
-
-    - Scaling & DTU usage
-
-    - Indexing
-
-    - Partitions
-
-  - Supports a galaxy of APIs and languages
-- Configuration & Code Samples 
-  - Project: AnalyzeMyStore
-- Lessons Learned 
+<ul>
+  <li>What is CosmosDB?</li>
+  <li>Why we use it</li>
+  <li>Global Distribution</li>
+  <li>Scaling & DTU usage</li>
+  <li>Indexing</li>
+  <li>Partitions</li>
+  <li>Supports a galaxy of APIs and languages</li>
+</ul>
+<ul>
+  <li>Configuration & Code Samples</li>
+  <li>Lessons Learned</li>
+</ul>
 ---
 
 ## What is Cosmos DB?
@@ -204,8 +202,8 @@ Document result = await client
 ```
 
 @[1-4](DocumentClient should be a Singleton Instance)
-@[14-26](Creating a database through the SDK)
-@[28-42](Creating the collection and throughput)
+@[16-26](Creating a database through the SDK)
+@[30-42](Creating the collection and throughput)
 
 ---
 
