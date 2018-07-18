@@ -5,7 +5,7 @@
  * https://github.com/gitpitch/gitpitch/wiki/Slideshow-Custom-CSS
  */
 .reveal ul{
- font-size: 50%; 
+ font-size: 75%; 
 }
 .reveal pre {
   width: 100%;
