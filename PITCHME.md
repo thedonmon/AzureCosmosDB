@@ -196,6 +196,8 @@ Document result = await client.ReadDocumentAsync(UriFactory.CreateDocumentUri("d
 ```
 
 @[1-4](DocumentClient should be a Singleton Instance)
+@[14-24](Creating a database through the SDK)
+@[28-40](Creating the collection and throughput)
 
 ---
 
