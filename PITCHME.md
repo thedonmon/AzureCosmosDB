@@ -33,19 +33,19 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 ---
 
 ## Why We Use It
-@ul
-- Ease of creating a databse almost instantaneously 
+<ul>
+<li>Ease of creating a databse almost instantaneously</li>
 
-- Creating object models to be stored as is - without schemas!
+<li>Creating object models to be stored as is - without schemas!</li>
 
-- Turnkey Distribution
+<li>Turnkey Distribution</li>
 
-- Low-cost of ownership - pay for space and scale as you go!
+<li>Low-cost of ownership - pay for space and scale as you go!</li>
 
-- Always available (money back guarantees)\
+<li>Always available</li>
 
-- Configurable connection policies
-@ulend
+<li>Configurable connection policies</li>
+<ul>
 ---
 
 ## Global Distribution
