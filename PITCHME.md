@@ -103,17 +103,21 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
   - Also enables sproc support
 @ulend
 +++
----?code=assets/partition.cs&lang=csharp&title = Partition Through Code
+
 ```csharp
 
-// Read document. Needs the partition key and the ID to be specified 
-Document result = await client.ReadDocumentAsync(UriFactory.CreateDocumentUri("db", "coll", "XMS-001-FE24C"),
- new RequestOptions {
-  PartitionKey = new PartitionKey("XMS-0001")
+/*Read document. 
+ *Needs the partition key and the ID to be specified 
+*/
+Document result = await client
+.ReadDocumentAsync(UriFactory.
+   CreateDocumentUri("database", "collection", "XMS-001-FE24C"),
+   new RequestOptions {
+    PartitionKey = new PartitionKey("XMS-0001")
  });
 
 ```
-@[6](Set partition key via code)
+@[9](Set partition key via code)
 ---
 
 ## API Support & Languages
