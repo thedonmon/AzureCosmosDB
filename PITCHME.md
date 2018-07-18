@@ -50,10 +50,10 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 <li>Provision throughput at the database level</li>
 
 <li>Different databases can be set to different DTU usages</li>
-
+<ul>
 <li>Partitions can live in their own domain accross the distributed network</li>
 <li>Policy based geo-fencing (China & Germany)</li>
-
+</ul>
 <li>Global writes without implementing a replication engine.</li>
 </ul>
 ---
