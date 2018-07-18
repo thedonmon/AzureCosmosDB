@@ -15,12 +15,12 @@
   <li>What is CosmosDB?</li>
   <li>Why we use it</li>
   <li>Global Distribution</li>
+  <ul>
   <li>Scaling & DTU usage</li>
   <li>Indexing</li>
   <li>Partitions</li>
+  </ul>
   <li>Supports a galaxy of APIs and languages</li>
-</ul>
-<ul>
   <li>Configuration & Code Samples</li>
   <li>Lessons Learned</li>
 </ul>
