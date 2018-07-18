@@ -4,7 +4,9 @@
  * For details, visit Wiki:
  * https://github.com/gitpitch/gitpitch/wiki/Slideshow-Custom-CSS
  */
-
+.ul code{
+ width: 100%; 
+}
 .reveal pre {
   width: 100%;
   box-shadow : none;
