@@ -103,7 +103,7 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
   - Also enables sproc support
 @ulend
 +++
-
+@ul[code]
 ```csharp
 
 /*Read document. 
@@ -118,14 +118,16 @@ Document result = await client
 
 ```
 @[9](Set partition key via code)
+@ulend
+
 ---
 
 ## API Support & Languages
-
+@ul
 - Microsoft finally open source?!
 
   - Supports - .NET, Python, Node.js, Java, and Xamarin (mobile apps) 
-
+  
 - SQL API
 
   - Closest syntax to SQL Server, rapid development of non-relational document databses. Microsoft NoSQL solution
@@ -145,7 +147,7 @@ Document result = await client
 - Cassandra API
 
   - Integrate with Apache Cassandra API and query data from Cosmos DB using Cassandra Query Based Language tools. 
-
+@ulend
 ---
 
 ## Code Samples!
