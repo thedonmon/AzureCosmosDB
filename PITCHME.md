@@ -63,7 +63,8 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
   - Different databases can be set to different DTU usages - NOTE: get gif of scaling the DTU usage
 
   - Partitions can live in their own domain accross the distributed network 
-
+@ulend
+@ul
 - Policy based geo-fencing (China & Germany)
 
 - Global writes without implementing a replication engine. 
@@ -77,7 +78,8 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
   - Default uses Consistent Indexing - synchronous indexing as documents enter, they are indexed costly over large sets of data
 
   - Indexes over all fields and subfields of an object - also costly for large sets
-
+@ulend
+@ul
 - Customizing Indexes
 
   - Choose which paths to include or exclude from indexing
@@ -101,7 +103,7 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
   - Also enables sproc support
 @ulend
 +++
----?code=src/assets/partition.cs&lang=csharp&title = Partition Through Code
+---?code=assets/partition.cs&lang=csharp&title = Partition Through Code
 ```csharp
 
 // Read document. Needs the partition key and the ID to be specified 
