@@ -6,6 +6,7 @@
  */
 .reveal ul{
  font-size: 75%; 
+ padding: 50vh;
 }
 .reveal pre {
   width: 100%;
