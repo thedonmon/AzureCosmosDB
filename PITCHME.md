@@ -13,7 +13,7 @@
 ---
 
 ## Agenda
-
+@ul
 - What is CosmosDB? 
   - Why we use it
 
@@ -29,7 +29,7 @@
 - Configuration & Code Samples 
   - Project: AnalyzeMyStore
 - Lessons Learned 
-
+@ulend
 ---
 
 ## What is Cosmos DB?
@@ -39,7 +39,7 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 ---
 
 ## Why We Use It
-
+@ul
 - Ease of creating a databse almost instantaneously 
 
 - Creating object models to be stored as is - without schemas!
@@ -51,11 +51,11 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 - Always available (money back guarantees)\
 
 - Configurable connection policies
-
+@ulend
 ---
 
 ## Global Distribution
-
+@ul
 - Databases can be replicated on the fly to ensure data is always available
 
 - Provision throughput at the database level
@@ -67,11 +67,11 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 - Policy based geo-fencing (China & Germany)
 
 - Global writes without implementing a replication engine. 
-
+@ulend
 ---
 
 ## How does Azure Cosmos DB index data?
-
+@ul
 - Azure Cosmos DB default indexing policy
 
   - Default uses Consistent Indexing - synchronous indexing as documents enter, they are indexed costly over large sets of data
@@ -87,11 +87,11 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
   - Configure indexing strategy - Consistent vs. Lazy vs. None
 
 - Can be customized via code or through Azure portal! - add screenshot
-
+@ulend
 ---
 
 ## Partitioning Collections
-
+@ul
 - Partition Key are defined via the path on the JSON object
 
 - Partition Key syntax vs the indexing syntax - partitioned paths cannot be excluded from indexing policies
@@ -99,9 +99,9 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 - Enables parallelism - searching multiple partitions in parallel
 
   - Also enables sproc support
-
+@ulend
 +++
-
+---?code=src/assets/partition.cs&lang=csharp&title = Partition Through Code
 ```csharp
 
 // Read document. Needs the partition key and the ID to be specified 
