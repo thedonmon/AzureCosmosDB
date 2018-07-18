@@ -7,8 +7,8 @@
 .reveal ul{
  font-size: 75%; 
 }
-ul .li {
- padding: 20px;
+li {
+ margin-bottom: 5px;
  
 }
 .reveal pre {
