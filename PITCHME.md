@@ -116,7 +116,7 @@ Document result = await client
  });
 
 ```
-@[9](Set partition key via code)
+@[12](Set partition key via code to query on)
 
 ---
 
