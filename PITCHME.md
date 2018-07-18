@@ -59,34 +59,24 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 ---
 
 ## How does Azure Cosmos DB index data?
-@ul
-- Azure Cosmos DB default indexing policy
-
-  - Default uses Consistent Indexing - synchronous indexing as documents enter, they are indexed costly over large sets of data
-
-  - Indexes over all fields and subfields of an object - also costly for large sets
-- Customizing Indexes
-
-  - Choose which paths to include or exclude from indexing
-
-  - Configure indexing types - hash, range, numeric, string, precision etc.
-
-  - Configure indexing strategy - Consistent vs. Lazy vs. None
-
-- Can be customized via code or through Azure portal! - add screenshot
-@ulend
+<ul>
+  <li>Azure Cosmos DB default indexing policy</li>
+  <li>Customizing Indexes</li>
+  <li>Can be customized via code or through Azure portal!</li>
+</ul>
+![Logo](https://media.giphy.com/media/1Aj18QFr0xz5LwrTRq/giphy.gif)
 ---
 
 ## Partitioning Collections
-@ul
-- Partition Key are defined via the path on the JSON object
+<ul>
+  <li>Partition Key are defined via the path on the JSON object</li>
 
-- Partition Key syntax vs the indexing syntax - partitioned paths cannot be excluded from indexing policies
+  <li>Partition Key syntax vs the indexing syntax - partitioned paths cannot be excluded from indexing policies</li>
 
-- Enables parallelism - searching multiple partitions in parallel
+  <li>Enables parallelism - searching multiple partitions in parallel</li>
 
-  - Also enables sproc support
-@ulend
+  <li>Also enables sproc support</li>
+</ul>
 +++
 
 ```csharp
@@ -109,39 +99,29 @@ Document result = await client
  });
 
 ```
-@[12](Set partition key via code to query on)
+@[8-12](Set partition key via code to query on)
 
 ---
 
 ## API Support & Languages
-@ul
-- Microsoft finally open source?!
+<ul>
+<li>Microsoft finally open source?!</li>
 
-  - Supports - .NET, Python, Node.js, Java, and Xamarin (mobile apps) 
+<li>Supports - .NET, Python, Node.js, Java, and Xamarin (mobile apps) </li>
   
-- SQL API
+<li>SQL API</li>
 
-  - Closest syntax to SQL Server, rapid development of non-relational document databses. Microsoft NoSQL solution
+<li>Table API</li>
 
-- Table API
+<li>Gremlin API</li>
 
-  - Migrate data from Azure Table Storage to Cosmos DB. Fully integrated with Azure SDKs
+<li>MongoDB API</li>
 
-- Gremlin API
-
-  - Leverage Gremlin for implementing and querying graph databases with Cosmos DB
-
-- MongoDB API
-
-  - Migrate existing MongoDB implementations to Cosomos DB. Supports the MongoDB aggregation pipeline
-
-- Cassandra API
-
-  - Integrate with Apache Cassandra API and query data from Cosmos DB using Cassandra Query Based Language tools. 
-@ulend
+<li>Cassandra API</li>
+</ul>
 ---
 
-## Code Samples!
+## Configuration With Code!
 
 +++
 
@@ -207,6 +187,9 @@ private async Task CreateCollectionIfNotExistsAsync() {
 
 ---
 
+### DEMO & Code Samples
+
+---
 ### Lessons Learned
 
 - Size restrictions on documents being stored (currently 2MB)
