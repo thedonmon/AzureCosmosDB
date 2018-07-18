@@ -97,6 +97,13 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 +++
 
 ```csharp
+DocumentCollection myCollection = new DocumentCollection();
+myCollection.Id = "collection";
+myCollection.PartitionKey.Paths.Add("/deviceId");
+```
+@[3](Partition on a field when creating the collection)
+
+```csharp
 
 /*Read document. 
  *Needs the partition key and the ID to be specified 
