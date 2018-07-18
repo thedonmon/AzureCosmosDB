@@ -9,6 +9,6 @@ theme-override : assets/css/PITCHME.css
 background : assets/image/constellation.svg
 background-size : cover
 highlight : atom-one-light
-transition : none
+transition : slide
 published : true
 footnote : "ShipBob + CosmosDB"
