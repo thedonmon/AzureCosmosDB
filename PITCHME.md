@@ -203,7 +203,7 @@ private async Task CreateCollectionIfNotExistsAsync() {
 
 @[1-4](DocumentClient should be a Singleton Instance)
 @[19-28](Creating a database through the SDK)
-@[32-47](Creating the collection and throughput)
+@[32-49](Creating the collection and throughput)
 
 ---
 
