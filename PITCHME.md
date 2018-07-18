@@ -78,8 +78,6 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
   - Default uses Consistent Indexing - synchronous indexing as documents enter, they are indexed costly over large sets of data
 
   - Indexes over all fields and subfields of an object - also costly for large sets
-@ulend
-@ul
 - Customizing Indexes
 
   - Choose which paths to include or exclude from indexing
@@ -103,7 +101,7 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
   - Also enables sproc support
 @ulend
 +++
-@ul[code]
+
 ```csharp
 
 /*Read document. 
@@ -111,14 +109,13 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 */
 Document result = await client
 .ReadDocumentAsync(UriFactory.
-   CreateDocumentUri("database", "collection", "XMS-001-FE24C"),
+   CreateDocumentUri("database", "collection", "XMS-001-52C"),
    new RequestOptions {
     PartitionKey = new PartitionKey("XMS-0001")
  });
 
 ```
 @[9](Set partition key via code)
-@ulend
 
 ---
 
@@ -156,21 +153,27 @@ Document result = await client
 
 ```csharp
         public async Task InitializeAsync() {
-         client = new DocumentClient(new Uri(Endpoint), AccessKey, new ConnectionPolicy {
+         client = new DocumentClient(
+          new Uri(Endpoint), AccessKey, new ConnectionPolicy {
           EnableEndpointDiscovery = true
          });
 
-         await client.CreateDatabaseIfNotExistsAsync(new Database() {
+         await client.CreateDatabaseIfNotExistsAsync(
+         new Database() {
           Id = DatabaseId
          });
-         await client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(DatabaseId), new DocumentCollection {
-          Id = CollectionId
-         });
+         await client.
+           CreateDocumentCollectionIfNotExistsAsync(
+           UriFactory.CreateDatabaseUri(DatabaseId), 
+           new DocumentCollection {
+              Id = CollectionId
+           });
         }
 
         private async Task CreateDatabaseIfNotExistsAsync() {
          try {
-          await client.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(DatabaseId));
+          await client.ReadDatabaseAsync(
+           UriFactory.CreateDatabaseUri(DatabaseId));
          } catch (DocumentClientException e) {
           if (e.StatusCode == System.Net.HttpStatusCode.NotFound) {
            await client.CreateDatabaseAsync(new Database {
@@ -185,7 +188,8 @@ Document result = await client
 
         private async Task CreateCollectionIfNotExistsAsync() {
          try {
-          await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId));
+          await client.ReadDocumentCollectionAsync(
+           UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId));
          } catch (DocumentClientException e) {
           if (e.StatusCode == System.Net.HttpStatusCode.NotFound) {
            await client.CreateDocumentCollectionAsync(
@@ -204,8 +208,8 @@ Document result = await client
 ```
 
 @[1-4](DocumentClient should be a Singleton Instance)
-@[14-24](Creating a database through the SDK)
-@[28-40](Creating the collection and throughput)
+@[14-26](Creating a database through the SDK)
+@[28-42](Creating the collection and throughput)
 
 ---
 
