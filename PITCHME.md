@@ -13,7 +13,7 @@
 ---
 
 ## Agenda
-@ul
+@ul[agenda]
 - What is CosmosDB? 
   - Why we use it
 
