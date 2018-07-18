@@ -35,34 +35,27 @@ Azure Cosmos provides a globally distributed database system that leverages a mu
 ## Why We Use It
 <ul>
 <li>Ease of creating a databse almost instantaneously</li>
-
 <li>Creating object models to be stored as is - without schemas!</li>
-
 <li>Turnkey Distribution</li>
-
 <li>Low-cost of ownership - pay for space and scale as you go!</li>
-
 <li>Always available</li>
-
 <li>Configurable connection policies</li>
-<ul>
+</ul>
 ---
 
 ## Global Distribution
-@ul
-- Databases can be replicated on the fly to ensure data is always available
+<ul>
+  <li>Databases can be replicated on the fly to ensure data is always available</li>
 
-- Provision throughput at the database level
+<li>Provision throughput at the database level</li>
 
-  - Different databases can be set to different DTU usages - NOTE: get gif of scaling the DTU usage
+<li>Different databases can be set to different DTU usages</li>
 
-  - Partitions can live in their own domain accross the distributed network 
-@ulend
-@ul
-- Policy based geo-fencing (China & Germany)
+<li>Partitions can live in their own domain accross the distributed network</li>
+<li>Policy based geo-fencing (China & Germany)</li>
 
-- Global writes without implementing a replication engine. 
-@ulend
+<li>Global writes without implementing a replication engine.</li>
+</ul>
 ---
 
 ## How does Azure Cosmos DB index data?
