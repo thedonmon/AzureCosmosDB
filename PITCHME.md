@@ -6,14 +6,11 @@
 
 #### Presented by
 
-<br>
-
 @llett & @dmaman
 
 ---
 
 ## Agenda
-@ul[agenda]
 - What is CosmosDB? 
   - Why we use it
 
@@ -29,7 +26,6 @@
 - Configuration & Code Samples 
   - Project: AnalyzeMyStore
 - Lessons Learned 
-@ulend
 ---
 
 ## What is Cosmos DB?
