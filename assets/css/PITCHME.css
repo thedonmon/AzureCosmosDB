@@ -4,7 +4,9 @@
  * For details, visit Wiki:
  * https://github.com/gitpitch/gitpitch/wiki/Slideshow-Custom-CSS
  */
-
+.agenda ul{
+ font-size: 60%; 
+}
 .reveal pre {
   width: 100%;
   box-shadow : none;
