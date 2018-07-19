@@ -95,7 +95,7 @@ Document result = await client
 .ReadDocumentAsync(UriFactory.
    CreateDocumentUri("database", "collection", "XMS-001-52C"),
    new RequestOptions {
-    PartitionKey = new PartitionKey("XMS-0001")
+    PartitionKey = new PartitionKey("Samsung1090")
  });
 
 ```
